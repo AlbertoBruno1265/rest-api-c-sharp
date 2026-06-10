@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using System.Configuration;
+using WebServiceFiap.Data.Contexts;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,6 +17,13 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+// Conexão com o Banco
+var connStr = builder.Configuration.GetConnectionString("DatabaseConnection");
+builder.Services.AddDbContext<DatabaseContext>(
+    opt => opt.UseOracle(connStr).EnableSensitiveDataLogging(true)
+);
+
 
 app.UseHttpsRedirection();
 
