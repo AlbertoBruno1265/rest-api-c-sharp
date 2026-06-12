@@ -10,6 +10,11 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+// Conexão com o Banco
+var connStr = builder.Configuration.GetConnectionString("DatabaseConnection");
+builder.Services.AddDbContext<ApplicationDbContext>(
+    opt => opt.UseOracle(connStr).EnableSensitiveDataLogging(true)
+);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -17,13 +22,6 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
-
-// Conexão com o Banco
-var connStr = builder.Configuration.GetConnectionString("DatabaseConnection");
-builder.Services.AddDbContext<DatabaseContext>(
-    opt => opt.UseOracle(connStr).EnableSensitiveDataLogging(true)
-);
-
 
 app.UseHttpsRedirection();
 

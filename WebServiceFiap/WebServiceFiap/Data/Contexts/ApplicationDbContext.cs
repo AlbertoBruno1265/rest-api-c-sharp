@@ -6,6 +6,8 @@ namespace WebServiceFiap.Data.Contexts
     public class ApplicationDbContext : DbContext
     {
 
+        public DbSet<UsuarioModel> Usuarios { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> opt) : base(opt)
         {
         }
