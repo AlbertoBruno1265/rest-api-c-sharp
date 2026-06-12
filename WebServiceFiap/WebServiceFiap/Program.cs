@@ -15,6 +15,7 @@ var connStr = builder.Configuration.GetConnectionString("DatabaseConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(
     opt => opt.UseOracle(connStr).EnableSensitiveDataLogging(true)
 );
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

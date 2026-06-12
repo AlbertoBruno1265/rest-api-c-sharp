@@ -8,7 +8,7 @@ namespace WebServiceFiap.Models
     {
         [Key]
         [Column("id")]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         [Required]
         [Column("endereco")]

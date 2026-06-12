@@ -8,19 +8,19 @@ namespace WebServiceFiap.Models
     {
         [Key]
         [Column("id_coleta")]
-        public int IdColeta { get; set; }
+        public long IdColeta { get; set; }
 
         [Column("data")]
         public DateTime Data { get; set; }
 
         [Column("id_catador")]
-        public int IdCatador { get; set; }
+        public long IdCatador { get; set; }
 
         [Column("id_descartador")]
-        public int IdDescartador { get; set; }
+        public long IdDescartador { get; set; }
 
         [Column("id_centro")]
-        public int IdCentro { get; set; }
+        public long IdCentro { get; set; }
 
         [Column("foi_finalizada")]
         public bool FoiFinalizada { get; set; }

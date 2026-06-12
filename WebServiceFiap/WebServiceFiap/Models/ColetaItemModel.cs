@@ -6,13 +6,13 @@ namespace WebServiceFiap.Models
     public class ColetaItemModel
     {
         [Column("id_coleta")]
-        public int IdColeta { get; set; }
+        public long IdColeta { get; set; }
 
         [Column("id_item")]
-        public int IdItem { get; set; }
+        public long IdItem { get; set; }
 
         [ForeignKey(nameof(IdColeta))]
-        public ColetaItemModel? Coleta { get; set; }
+        public ColetaModel? Coleta { get; set; }
 
         [ForeignKey(nameof(IdItem))]
         public ItemModel? Item { get; set; }

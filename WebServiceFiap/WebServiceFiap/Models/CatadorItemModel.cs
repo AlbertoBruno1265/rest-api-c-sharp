@@ -6,10 +6,10 @@ namespace WebServiceFiap.Models
     public class CatadorItemModel
     {
         [Column("id_catador")]
-        public int IdCatador { get; set; }
+        public long IdCatador { get; set; }
 
         [Column("id_item")]
-        public int IdItem { get; set; }
+        public long IdItem { get; set; }
 
         [Column("foi_entregue")]
         public bool FoiEntregue { get; set; }
