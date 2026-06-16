@@ -15,6 +15,12 @@ namespace WebServiceFiap.Services
         public IEnumerable<DescartadorModel> GetAll()
             => _repository.GetAll();
 
+        public IEnumerable<DescartadorModel> GetPaged(int page, int pageSize)
+            => _repository.GetPaged(page, pageSize);
+
+        public int Count()
+            => _repository.Count();
+
         public DescartadorModel? GetById(long id)
             => _repository.GetById(id);
 

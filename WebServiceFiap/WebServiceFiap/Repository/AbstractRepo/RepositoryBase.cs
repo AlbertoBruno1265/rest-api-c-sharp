@@ -17,6 +17,22 @@ namespace WebServiceFiap.Repository.AbstractRepo
             return _context.Set<TEntity>().ToList();
         }
 
+        public virtual IEnumerable<TEntity> GetPaged(int page, int pageSize)
+        {
+            var safePage = Math.Max(page, 1);
+            var safePageSize = Math.Clamp(pageSize, 1, 100);
+
+            return _context.Set<TEntity>()
+                .Skip((safePage - 1) * safePageSize)
+                .Take(safePageSize)
+                .ToList();
+        }
+
+        public virtual int Count()
+        {
+            return _context.Set<TEntity>().Count();
+        }
+
         public virtual TEntity? GetById(long id)
         {
             return _context.Set<TEntity>().Find(id);

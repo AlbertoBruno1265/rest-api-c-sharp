@@ -15,6 +15,12 @@ namespace WebServiceFiap.Services
         public IEnumerable<CentroColetaModel> GetAll()
             => _repository.GetAll();
 
+        public IEnumerable<CentroColetaModel> GetPaged(int page, int pageSize)
+            => _repository.GetPaged(page, pageSize);
+
+        public int Count()
+            => _repository.Count();
+
         public CentroColetaModel? GetById(long id)
             => _repository.GetById(id);
 

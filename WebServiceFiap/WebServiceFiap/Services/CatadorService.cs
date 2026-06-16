@@ -15,6 +15,12 @@ namespace WebServiceFiap.Services
         public IEnumerable<CatadorModel> GetAll()
             => _repository.GetAll();
 
+        public IEnumerable<CatadorModel> GetPaged(int page, int pageSize)
+            => _repository.GetPaged(page, pageSize);
+
+        public int Count()
+            => _repository.Count();
+
         public CatadorModel? GetById(long id)
             => _repository.GetById(id);
 

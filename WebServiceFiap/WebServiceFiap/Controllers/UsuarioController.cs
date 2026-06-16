@@ -19,11 +19,19 @@ namespace WebServiceFiap.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
-            var usuarios = _service.GetAll();
+            var safePage = Math.Max(page, 1);
+            var safePageSize = Math.Clamp(pageSize, 1, 100);
+            var usuarios = _service.GetPaged(safePage, safePageSize);
 
-            return Ok(usuarios);
+            return Ok(new
+            {
+                page = safePage,
+                pageSize = safePageSize,
+                totalItems = _service.Count(),
+                items = usuarios
+            });
         }
 
         [HttpGet("{id:long}")]

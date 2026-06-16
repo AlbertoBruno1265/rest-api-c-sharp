@@ -17,6 +17,16 @@ namespace WebServiceFiap.Services
             return _repository.GetAll();
         }
 
+        public IEnumerable<UsuarioModel> GetPaged(int page, int pageSize)
+        {
+            return _repository.GetPaged(page, pageSize);
+        }
+
+        public int Count()
+        {
+            return _repository.Count();
+        }
+
         public UsuarioModel? GetById(long id)
         {
             return _repository.GetById(id);
