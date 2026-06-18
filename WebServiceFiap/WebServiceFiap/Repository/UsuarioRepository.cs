@@ -10,5 +10,11 @@ namespace WebServiceFiap.Repository
             : base(context)
         {
         }
+
+        public UsuarioModel? GetByEmail(string email)
+        {
+            return _context.Usuarios
+                .FirstOrDefault(usuario => usuario.Email == email);
+        }
     }
 }

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using WebServiceFiap.Models;
 using WebServiceFiap.Services;
 
@@ -43,6 +44,7 @@ namespace WebServiceFiap.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Create([FromBody] CatadorModel novoCatador)
         {
             _service.Add(novoCatador);
@@ -55,6 +57,7 @@ namespace WebServiceFiap.Controllers
         }
 
         [HttpPut("{id:long}")]
+        [Authorize]
         public IActionResult Update(long id, [FromBody] CatadorModel catador)
         {
             var catadorExistente = _service.GetById(id);
@@ -70,6 +73,7 @@ namespace WebServiceFiap.Controllers
         }
 
         [HttpDelete("{id:long}")]
+        [Authorize]
         public IActionResult Delete(long id)
         {
             var catador = _service.GetById(id);

@@ -32,6 +32,16 @@ namespace WebServiceFiap.Services
             return _repository.GetById(id);
         }
 
+        public UsuarioModel? Authenticate(string email, string senha)
+        {
+            var usuario = _repository.GetByEmail(email);
+
+            if (usuario == null || usuario.Senha != senha)
+                return null;
+
+            return usuario;
+        }
+
         public void Add(UsuarioModel usuario)
         {
             _repository.Add(usuario);

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using WebServiceFiap.Data.Contexts;
 using WebServiceFiap.Models;
 using WebServiceFiap.Repository;
@@ -58,6 +59,7 @@ namespace WebServiceFiap.Controllers
         }
 
         [HttpPut("{id:long}")]
+        [Authorize]
         public IActionResult Update(
             long id,
             [FromBody] UsuarioModel usuario)
@@ -75,6 +77,7 @@ namespace WebServiceFiap.Controllers
         }
 
         [HttpDelete("{id:long}")]
+        [Authorize]
         public IActionResult Delete(long id)
         {
             var usuario = _service.GetById(id);

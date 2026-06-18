@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using WebServiceFiap.Data.Contexts;
+using WebServiceFiap.Models;
 
 namespace WebServiceFiap.Tests;
 
@@ -33,6 +34,17 @@ public class ApiFactory : WebApplicationFactory<Program>
 
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
+
+            context.Usuarios.Add(new UsuarioModel
+            {
+                Id = 1,
+                Nome = "Usuario Teste",
+                Email = "teste@fiap.com.br",
+                Senha = "123456",
+                Funcao = "Admin"
+            });
+
+            context.SaveChanges();
         });
     }
 }
